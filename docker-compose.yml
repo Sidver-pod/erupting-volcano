@@ -1,0 +1,42 @@
+version: '3.8' # version of Compose file format
+
+services:
+  # BACKEND SERVICE
+  backend_server:
+    restart: always # restarts in case of failure
+    build: . # finds the 'Dockerfile' in the current directory to build the image
+    ports:
+      - 3000:3000 # host port mapped to container port
+    working_dir: /app
+    volumes:
+      - ./:/app
+    links:
+      - mysql_server # helps link 'backend_server' container to 'mysql_server' container
+    depends_on:
+      mysql_server: # before 'backend_server' starts it must wait for 'mysql_server' to start
+        condition: service_healthy # until 'mysql_server' returns a response that it's "healthy"
+
+    environment:
+      DB_HOST: mysql_server
+      DB_USER: root
+      DB_PASSWORD: secret
+      DB_NAME: youtube-data
+
+  # DATABASE SERVICE
+  mysql_server:
+    restart: always # restarts in case of failure
+    image: mysql:8.0 # pulls image from Docker Hub
+    ports:
+      - 3306:3306 # host port mapped to container port
+    volumes:
+      - youtube-data:/var/lib/mysql # persisting data here (in 'mysql_server' container)
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: youtube-data
+    healthcheck: # command to check "health" of the database
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"] # when the mysql_server is "healthy", it will return a 0 exit code, indicating that it is ready to accept connections.
+      timeout: 5s
+      retries: 5
+
+volumes:
+  youtube-data:
