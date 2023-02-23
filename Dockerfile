@@ -1,12 +1,10 @@
 # Node.js image
 FROM node:16
 
-RUN mkdir /app
-
 # setting up a directory in the image (all lines below this assume '/app' as the working directory)
 WORKDIR /app
 
-COPY package.json ./app
+COPY package.json ./
 
 RUN npm install
 
