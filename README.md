@@ -66,6 +66,9 @@ Either of the following two ways will help you with that:-
 
     #5 removes the Containers and their persistent volumes!
     docker-compose down --volumes
+    
+    #6 remove any dangling images
+    docker rmi $(docker images -f "dangling=true" -q)
     ```
 
 <hr>
