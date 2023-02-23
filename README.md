@@ -74,7 +74,7 @@ Either of the following two ways will help you with that:-
 1. **Node.js** version 16.0 (or newer)
     - Once set up, run the following command to install mandatory packages: `npm install`
 2. **MySQL** version 8.0 (or newer)
-3. And don't forget to clone this project and open it in VS Code (or your preferred IDE).
+3. And don't forget to clone this repository and open it in VS Code (or your preferred IDE).
 
 <hr>
 
