@@ -6,7 +6,7 @@ RUN mkdir /app
 # setting up a directory in the image (all lines below this assume '/app' as the working directory)
 WORKDIR /app
 
-COPY package.json .
+COPY package.json ./app
 
 RUN npm install
 
