@@ -3,13 +3,13 @@
 ## High Level Design
 
 #### **#1** Fetching video data from YouTube Data API (v3) every _10 seconds_.
-<img src="./doc/imgs/Operation%201.jpg" alt="Server fetching latest video data from YouTube Data API and storing in Database" width="60%"/><br>
+![Server fetching latest video data from YouTube Data API and storing in Database](https://user-images.githubusercontent.com/75096302/220896124-930723f7-9f15-42be-9d0f-5bc236758b5b.jpg)
 
 #### **#2** Presenting video data to Client in a paginated fashion
-<img src="./doc/imgs/Operation%202.jpg" alt="Client sending GET/Search request to Server; Server retrieves data from Database and returns to Client" width="60%"/><br>
+![Client sending GET/Search request to Server; Server retrieves data from Database and returns to Client](https://user-images.githubusercontent.com/75096302/220896135-4bfc10df-c330-4f25-ae2e-e205fa760b58.jpg)
 
 #### **#3** Database Schema & Association
-<img src="./doc/imgs/Table%20Schemas%20and%20their%20Association.jpg" alt="One-Many Association between NextPageToken table and VideoData table respectively" width="60%"/>
+![One-Many Association between NextPageToken table and VideoData table respectively](https://user-images.githubusercontent.com/75096302/220896143-fe8a4e6b-c4ac-478d-99b9-013637eba014.jpg)
 
 <br>
 
@@ -20,9 +20,6 @@
 3. This data is then presented to a Client requesting for it in a paginated fashion. Each video data is presented in a reverse chronological order of the date-time it was published in (i.e. in descending order; latest videos show up first)
 4. Also, Client is capable of making search queries for this data by providing its _Title_ and _Description_.
     > Note: searching with a _Description_ is optional as many of the data don't necessarily have one.
-
-<br>
-<hr>
 
 ## **"How to run this project on my local computer?"**
 Either of the following two ways will help you with that:-
@@ -71,7 +68,6 @@ Either of the following two ways will help you with that:-
     docker-compose down --volumes
     ```
 
-<br>
 <hr>
 
 ## Minimum Requirements <span id="min-req"></span>
@@ -80,7 +76,6 @@ Either of the following two ways will help you with that:-
 2. **MySQL** version 8.0 (or newer)
 3. And don't forget to clone this project and open it in VS Code (or your preferred IDE).
 
-<br>
 <hr>
 
 ## Install the following packages <span id="install"></span>
@@ -101,13 +96,11 @@ Either of the following two ways will help you with that:-
 
 - **CORS** `npm install cors --save`
 
-<br>
 <hr>
 
 ## Changes to make... <span id="change"></span>
 - Make changes to the `.env` file by populating respective fields with the values provided to you in the email.
 
-<br>
 <hr>
 
 ## Running the Server <span id="run"></span>
@@ -117,7 +110,6 @@ Either of the following two ways will help you with that:-
     npm start
     ```
 
-<br>
 <hr>
 
 ## API Testing <span id="api-testing"></span>
@@ -167,16 +159,11 @@ Either of the following two ways will help you with that:-
 >## **Important Note ⚠️**
 >Once YouTube's allocated quota for making requests to its Data API exhausts, you'll no longer be able to request for more data! Read more about it here → [YouTube Data API - Quota and Compliance Audits](https://developers.google.com/youtube/v3/guides/quota_and_compliance_audits).
 
-<br>
-
 ## Reference Links
 - [YouTube Data API (v3) Search: list](https://developers.google.com/youtube/v3/docs/search/list)
 - [YouTube Data API (v3) Implementation: Pagination](https://developers.google.com/youtube/v3/guides/implementation/pagination)
 
-<br>
-
 # Impact the making of this project has had...
 Through the creation of this project, I discovered that **YouTube Data API (v3)** happens to have bugs in it. Bug #1: data received through pagination keeps repeating one after another or is spreading among several pages when _maxResults_ is a number lesser than 50. Bug #2: page tokens— _nextPageToken_ & _prevPageToken_ obtained through pagination are not the same (of the first & third pages, respectively). The first time I reported this to Google, one of the engineers couldn't reproduce the problem and marked it as _"Intended behavior"_. So I reported again, this time with a more reasonable explanation. And it got accepted but got a mark of 'Duplicate' pointing to my previous report! Though it has been overlooked or is being processed internally (I cannot know), I can validate that this is a legitimate problem.
-<br>
 <br>
 Check it out → [Google Issue Tracker](https://issuetracker.google.com/issues/269646336).
