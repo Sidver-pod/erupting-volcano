@@ -1,0 +1,73 @@
+body {
+  font-family: 'Titillium Web';
+}
+
+.data-table {
+  border-collapse: collapse;
+  width: 90%;
+  height: 25em;
+  margin: 25px auto;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.data-table thead tr td {
+  font-size: 18px;
+  letter-spacing: 1px;
+  padding: 8px;
+  font-weight: bold;
+}
+
+.data-table tbody tr td {
+  padding: 8px;
+}
+
+/* Pagination  */
+
+#page-number {
+  color: #111;
+  border: 2px solid #d6d6d6;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  height: 38px;
+  margin-right: 4px;
+  padding: 0;
+  text-align: center;
+  width: 32px;
+  font-size: 0.9em;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+}
+
+#button-left {
+  margin-right: 14px;
+  font-size: 15px;
+  cursor: pointer;
+}
+#button-right {
+  margin-left: 14px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/*  removing toggle button from input box */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  appearance: textfield;
+}
