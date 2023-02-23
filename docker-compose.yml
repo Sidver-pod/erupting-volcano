@@ -7,9 +7,8 @@ services:
     build: . # finds the 'Dockerfile' in the current directory to build the image
     ports:
       - 3000:3000 # host port mapped to container port
-    working_dir: /app
     volumes:
-      - ./:/app
+      - ./data:/app/data
     links:
       - mysql_server # helps link 'backend_server' container to 'mysql_server' container
     depends_on:
