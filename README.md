@@ -69,6 +69,15 @@ Either of the following two ways will help you with that:-
     
     #6 remove any dangling images
     docker rmi $(docker images -f "dangling=true" -q)
+    
+    #7 to view images
+    docker images
+
+    #8 remove one or more images
+    docker image rm <image_id>
+
+    #9 removing one or more images by force
+    docker image rm -f <image_id>
     ```
 
 <hr>
