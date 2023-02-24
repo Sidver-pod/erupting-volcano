@@ -16,7 +16,10 @@ exports.getVideoData = (req, res, next) => {
             ['publishedAt', 'DESC']
         ],
         offset: (currentPageNo - 1) * DATA_PER_PAGE,
-        limit: DATA_PER_PAGE
+        limit: DATA_PER_PAGE,
+        attributes: [
+            'title', 'description', 'publishedAt', 'thumbnailURL'
+        ]
     })
     .then(result => {
         let totalCount_VideoData = result.count; // integer
@@ -65,7 +68,10 @@ exports.getSearch = (req, res, next) => {
                 description: description
             },
             offset: (currentPageNo - 1) * DATA_PER_PAGE,
-            limit: DATA_PER_PAGE
+            limit: DATA_PER_PAGE,
+            attributes: [
+                'title', 'description', 'publishedAt', 'thumbnailURL'
+            ]
         })
         .then(result => {
             let totalCount_SearchData = result.count;
@@ -96,7 +102,10 @@ exports.getSearch = (req, res, next) => {
                 title: title
             },
             offset: (currentPageNo - 1) * DATA_PER_PAGE,
-            limit: DATA_PER_PAGE
+            limit: DATA_PER_PAGE,
+            attributes: [
+                'title', 'description', 'publishedAt', 'thumbnailURL'
+            ]
         })
         .then(result => {
             let totalCount_SearchData = result.count;
